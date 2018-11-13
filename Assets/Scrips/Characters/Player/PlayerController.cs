@@ -2,6 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+
+
+//healthBar.SendMessageUpwards("TakeDamage", 15f);    LINEA DE CODIGO QUE SE DEBE AGREGAR A UNA FUNCIÓN DE RECIBIR DAÑO PARA QUE RESTE VIDA 15 DE VIDA.
+//Ejemplo colisionando contra un enemigo o con una bala enemiga.
+
+
+
 public class PlayerController : MonoBehaviour {
 
     public float maxSpeed = 5f;
@@ -14,9 +23,15 @@ public class PlayerController : MonoBehaviour {
     private bool jump;
     private bool doubleJump;
 
+    private GameObject healthbar;
+
+
     void Start() {
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        healthbar = GameObject.Find("Healthbar");
+
     }
 
     void Update() {
