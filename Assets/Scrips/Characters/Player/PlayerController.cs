@@ -26,12 +26,13 @@ public class PlayerController : MonoBehaviour {
     private GameObject healthbar;
 
 
+    private void Awake() {
+        healthbar = GameObject.FindGameObjectWithTag("Healthbar");
+    }
+
     void Start() {
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-
-        healthbar = GameObject.Find("Healthbar");
-
     }
 
     void Update() {
