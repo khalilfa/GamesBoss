@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class PlayerSwordController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+    public Transform playerGun;
+    public GameObject camera;
+
+    private void Start() {
+        this.camera = GameObject.FindGameObjectWithTag("MainCamera");
+    }
+
+    void FixedUpdate () {
+        SetGun();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    void SetGun() {
+        if (Input.GetKey(KeyCode.Alpha2)) {
+            GameObject newPlayer = (Instantiate(playerGun, transform.position, transform.rotation)).gameObject;
+            this.camera.GetComponent<CameraFollow>().SetPlayer(newPlayer);
+            Destroy(this.gameObject);
+        }
+    }
 }

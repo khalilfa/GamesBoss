@@ -12,6 +12,10 @@ public class CameraFollow : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
+    public void SetPlayer(GameObject newPlayer) {
+        this.player = newPlayer;
+    }
+
     private void FixedUpdate() {
         FollowPlayer();
     }

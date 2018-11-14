@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Healthbar
+  - Bullet
+  - Gun
   layers:
   - Default
   - TransparentFX
@@ -51,6 +53,9 @@ TagManager:
     locked: 0
   - name: Platform
     uniqueID: 2743047733
+    locked: 0
+  - name: Bullet
+    uniqueID: 3437609139
     locked: 0
   - name: Player
     uniqueID: 2075193629
