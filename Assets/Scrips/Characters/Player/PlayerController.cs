@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour {
     private bool doubleJump;
 
     private GameObject healthbar;
+    public int monedas = 0;
 
 
     private void Awake() {
@@ -120,4 +121,14 @@ public class PlayerController : MonoBehaviour {
     {
         healthbar.SendMessageUpwards("TakeDamage", -5f);
     }
+
+    public void SumarMoneda()
+    {
+        monedas++;
+    }
+
+
+
 }
+
+
