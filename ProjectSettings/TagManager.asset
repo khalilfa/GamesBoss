@@ -8,6 +8,10 @@ TagManager:
   - Healthbar
   - Bullet
   - Gun
+  - Platform
+  - Pinchos
+  - Muerte
+  - Life
   layers:
   - Default
   - TransparentFX

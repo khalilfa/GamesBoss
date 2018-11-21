@@ -33,6 +33,9 @@ public class PlayerController : MonoBehaviour {
     void Start() {
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+
+        healthbar = GameObject.Find("Healthbar");
     }
 
     void Update() {
@@ -83,5 +86,38 @@ public class PlayerController : MonoBehaviour {
             rb2d.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             jump = false;
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D col)  // SI TOCA LOS PINCHOS PIERDA 5 DE VIDA ---- SI SE CAE DE PANTALLA SE REINICIA LA EL JUEGO- ACORDARSE TILDAS OPCION "IS TRIGGER" EN LOS PINCHOS.
+    {
+        if (col.gameObject.tag == "Pinchos" )
+        {
+           
+            healthbar.SendMessageUpwards("TakeDamage", 5f);
+        }
+
+        if (col.gameObject.tag == "Bullet")
+        {
+
+            healthbar.SendMessageUpwards("TakeDamage", 15f); //PONER BULLET EN TRIGER, SI NO, NO VA A SACAR VIDA.
+        }
+
+        if (col.gameObject.tag == "Life")
+        {
+
+            healthbar.SendMessageUpwards("TakeDamage", -5f); //SI AGARRO UN CORAZÓN ME CURA 5 DE VIDA, ACORDARSE DE DESTRUIRLO CUANDO PERSONAJE LO AGARRE.
+        }
+
+        if (col.gameObject.tag == "Muerte")
+        {
+            Application.LoadLevel(Application.loadedLevel);
+           
+        }
+
+    }
+
+    public void SumarVida()
+    {
+        healthbar.SendMessageUpwards("TakeDamage", -5f);
     }
 }

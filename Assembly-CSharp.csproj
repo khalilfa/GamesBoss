@@ -62,7 +62,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\BulletController.cs" />
+    <Compile Include="Assets\Corazon.cs" />
     <Compile Include="Assets\Pause.cs" />
+    <Compile Include="Assets\PlataformaFalling.cs" />
+    <Compile Include="Assets\PlataformaMovil.cs" />
+    <Compile Include="Assets\PlataformFalling.cs" />
     <Compile Include="Assets\Scrips\Camera\CameraFollow.cs" />
     <Compile Include="Assets\Scrips\Characters\Enemies\EnemyController.cs" />
     <Compile Include="Assets\Scrips\Characters\Player\FeetController.cs" />
