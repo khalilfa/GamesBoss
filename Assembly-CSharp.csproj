@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\BulletController.cs" />
     <Compile Include="Assets\Corazon.cs" />
+    <Compile Include="Assets\GameController.cs" />
     <Compile Include="Assets\Moneda.cs" />
     <Compile Include="Assets\Pause.cs" />
     <Compile Include="Assets\PlataformaFalling.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Assets\Scrips\Characters\Player\PlayerGunController.cs" />
     <Compile Include="Assets\Scrips\Characters\Player\PlayerSwordController.cs" />
     <Compile Include="Assets\Warp.cs" />
+    <Compile Include="Assets\ZombieController.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Facu/Desktop/BOOS/GamesBoss/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

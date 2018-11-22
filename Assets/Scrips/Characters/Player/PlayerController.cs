@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour {
     public float speed = 2f;
     public bool grounded;
     public float jumpPower = 6.5f;
+    
 
     private Rigidbody2D rb2d;
     private Animator anim;
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour {
     private GameObject healthbar;
     public int monedas = 0;
 
+    private AudioSource audioPlayer;
 
     private void Awake() {
         healthbar = GameObject.FindGameObjectWithTag("Healthbar");
@@ -34,6 +36,7 @@ public class PlayerController : MonoBehaviour {
     void Start() {
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        audioPlayer = GetComponent<AudioSource>();
 
 
         healthbar = GameObject.Find("Healthbar");
@@ -106,7 +109,7 @@ public class PlayerController : MonoBehaviour {
         if (col.gameObject.tag == "Life")
         {
 
-            healthbar.SendMessageUpwards("TakeDamage", -5f); //SI AGARRO UN CORAZÓN ME CURA 5 DE VIDA, ACORDARSE DE DESTRUIRLO CUANDO PERSONAJE LO AGARRE.
+            healthbar.SendMessageUpwards("TakeDamage", -15f); //SI AGARRO UN CORAZÓN ME CURA 5 DE VIDA
         }
 
         if (col.gameObject.tag == "Muerte")
