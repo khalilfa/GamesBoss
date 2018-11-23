@@ -5,13 +5,6 @@ Agregar zombies.(agregar animaciones -> se encarga facu.)
 
 
 
-
-
-
-
-
-
-
 CREAR PORTAL HACIA UN BONUS.
 
 
@@ -24,3 +17,8 @@ agregar musica cuando salto, disparo y agarro un item.
 Arreglar personaje con espada, cada vez q lo selecciono se pausa el juego.
 
 que personaje pegue con espada y crear objeto rompible.
+
+
+agregar animacion de morir, herir a personaje.
+
+cartel de game over y try again al morir.
