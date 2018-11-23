@@ -12,6 +12,7 @@ TagManager:
   - Pinchos
   - Muerte
   - Life
+  - Enemy
   layers:
   - Default
   - TransparentFX

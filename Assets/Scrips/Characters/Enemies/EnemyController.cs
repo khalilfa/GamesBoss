@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour {
     public float velEnemy;
     public float movimiento = 1;
     public bool mirandoDerecha = true;
+    public int life = 100;
 
     private Animator animator;
     private Rigidbody2D rb;
@@ -20,6 +21,7 @@ public class EnemyController : MonoBehaviour {
 
     void FixedUpdate() {
         Movimiento();
+        Dead();
     }
 
     void Movimiento() {
@@ -39,6 +41,20 @@ public class EnemyController : MonoBehaviour {
                 this.rb.velocity = new Vector3(-velEnemy, rb.velocity.y, 0);
                 animator.SetFloat("velX", velEnemy);
             }
+        }
+    }
+
+    public void GetDamage(int damage) {
+        this.life -= damage;
+    }
+
+    bool IsDead() {
+        return this.life <= 0;
+    }
+
+    void Dead() {
+        if (this.IsDead()) {
+            DestroyImmediate(this.gameObject);
         }
     }
 }

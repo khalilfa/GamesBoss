@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour {
     public float speed = 2f;
     public bool grounded;
     public float jumpPower = 6.5f;
-    
+    public int rightPosition = 1;
+    public int life = 100;
 
     private Rigidbody2D rb2d;
     private Animator anim;
@@ -79,10 +80,12 @@ public class PlayerController : MonoBehaviour {
 
         if (h > 0.1f) {
             transform.localScale = new Vector3(1f, 1f, 1f);
+            this.rightPosition = 1;
         }
 
         if (h < -0.1f) {
             transform.localScale = new Vector3(-1f, 1f, 1f);
+            this.rightPosition = -1;
         }
 
         if (jump) {
@@ -98,12 +101,6 @@ public class PlayerController : MonoBehaviour {
         {
            
             healthbar.SendMessageUpwards("TakeDamage", 5f);
-        }
-
-        if (col.gameObject.tag == "Bullet")
-        {
-
-            healthbar.SendMessageUpwards("TakeDamage", 15f); //PONER BULLET EN TRIGER, SI NO, NO VA A SACAR VIDA.
         }
 
         if (col.gameObject.tag == "Life")
@@ -128,6 +125,10 @@ public class PlayerController : MonoBehaviour {
     public void SumarMoneda()
     {
         monedas++;
+    }
+
+    public void GetDamage(int damage) {
+        healthbar.SendMessageUpwards("TakeDamage", damage);
     }
 
 

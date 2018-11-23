@@ -16,6 +16,9 @@ public class PlayerGunController : MonoBehaviour {
 
     void FixedUpdate () {
         setSword();
+    }
+
+    private void Update() {
         Shoot();
     }
 
@@ -28,8 +31,9 @@ public class PlayerGunController : MonoBehaviour {
     }
 
     void Shoot() {
-        if (Input.GetKey(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space)) {
             GameObject newBullet = (Instantiate(bullet, gun.transform.position, gun.transform.rotation)).gameObject;
+            newBullet.GetComponent<BulletController>().SetState(this.gameObject);
         }
     }
 }
