@@ -14962,6 +14962,11 @@ Prefab:
       propertyPath: gun
       value: 
       objectReference: {fileID: 2103797900}
+    - target: {fileID: 114535556009714014, guid: fb52f448b4908834989f91450749bd01,
+        type: 2}
+      propertyPath: healthbar
+      value: 
+      objectReference: {fileID: 205204166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb52f448b4908834989f91450749bd01, type: 2}
   m_IsPrefabAsset: 0

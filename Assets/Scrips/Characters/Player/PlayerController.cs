@@ -2,15 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
-
-
-//healthBar.SendMessageUpwards("TakeDamage", 15f);    LINEA DE CODIGO QUE SE DEBE AGREGAR A UNA FUNCIÓN DE RECIBIR DAÑO PARA QUE RESTE VIDA 15 DE VIDA.
-//Ejemplo colisionando contra un enemigo o con una bala enemiga.
-
-
-
 public class PlayerController : MonoBehaviour {
 
     public float maxSpeed = 5f;
@@ -25,22 +16,15 @@ public class PlayerController : MonoBehaviour {
     private bool jump;
     private bool doubleJump;
 
-    private GameObject healthbar;
+    public GameObject healthbar;
     public int monedas = 0;
 
     private AudioSource audioPlayer;
-
-    private void Awake() {
-        healthbar = GameObject.FindGameObjectWithTag("Healthbar");
-    }
 
     void Start() {
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         audioPlayer = GetComponent<AudioSource>();
-
-
-        healthbar = GameObject.Find("Healthbar");
     }
 
     void Update() {
@@ -99,14 +83,14 @@ public class PlayerController : MonoBehaviour {
     {
         if (col.gameObject.tag == "Pinchos" )
         {
-           
-            healthbar.SendMessageUpwards("TakeDamage", 5f);
+
+            healthbar.GetComponent<Healthbar>().TakeDamage(5);
         }
 
         if (col.gameObject.tag == "Life")
         {
 
-            healthbar.SendMessageUpwards("TakeDamage", -15f); //SI AGARRO UN CORAZÓN ME CURA 5 DE VIDA
+            healthbar.GetComponent<Healthbar>().TakeDamage(-15);
         }
 
         if (col.gameObject.tag == "Muerte")
@@ -119,7 +103,7 @@ public class PlayerController : MonoBehaviour {
 
     public void SumarVida()
     {
-        healthbar.SendMessageUpwards("TakeDamage", -5f);
+        healthbar.GetComponent<Healthbar>().TakeDamage(-5);
     }
 
     public void SumarMoneda()
@@ -128,7 +112,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void GetDamage(int damage) {
-        healthbar.SendMessageUpwards("TakeDamage", damage);
+        healthbar.GetComponent<Healthbar>().TakeDamage(damage);
     }
 
 
