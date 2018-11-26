@@ -183,6 +183,9 @@ MonoBehaviour:
   speed: 75
   grounded: 1
   jumpPower: 7
+  rightPosition: 1
+  life: 100
+  monedas: 0
 --- !u!212 &212286028543910572
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -216,7 +219,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2075193629
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 41fd4b7b6fc40a542bd1963fd487f936, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -7,54 +7,94 @@ public class EnemyController : MonoBehaviour {
     private float posicionIncial;
     public float velEnemy;
     public float movimiento = 1;
-    public bool mirandoDerecha = true;
-    public int life = 100;
+    public int rightPosition = 1;
+    public float visualRadius;
+    public GameObject player;
+    private bool shootOn = false;
+
+    public GameObject gun;
+    public Transform bullet;
 
     private Animator animator;
     private Rigidbody2D rb;
 
     void Start() {
-        animator = GetComponent<Animator>();
+        this.player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         posicionIncial = this.transform.position.x;
+
+        InvokeRepeating("Shoot", 1, 1);
     }
 
     void FixedUpdate() {
         Movimiento();
-        Dead();
+        InVisualRaius();
+        Follow();
     }
 
-    void Movimiento() {
-        if (mirandoDerecha) {
-            if (this.transform.position.x > posicionIncial + movimiento) {
-                mirandoDerecha = false;
-                this.transform.localScale = new Vector3(-1, 1, 1);
-            } else {
-                this.rb.velocity = new Vector3(velEnemy, rb.velocity.y, 0);
-                animator.SetFloat("velX", velEnemy);
-            }
-        } else {
-            if (this.transform.position.x < posicionIncial - movimiento) {
-                mirandoDerecha = true;
-                this.transform.localScale = new Vector3(1, 1, 1);
-            } else {
-                this.rb.velocity = new Vector3(-velEnemy, rb.velocity.y, 0);
-                animator.SetFloat("velX", velEnemy);
-            }
+    void Shoot() {
+        if (this.shootOn) {
+            GameObject newBullet = (Instantiate(bullet, this.gun.transform.position, this.gun.transform.rotation)).gameObject;
+            newBullet.GetComponent<BulletController>().SetState(this.gameObject);
         }
     }
 
-    public void GetDamage(int damage) {
-        this.life -= damage;
+    void InVisualRaius() {
+        float distance = Vector2.Distance(this.player.transform.position, transform.position);
+        Vector3 target = this.player.transform.position;
+        if (distance < this.visualRadius) {
+            this.shootOn = true;
+        }
     }
 
-    bool IsDead() {
-        return this.life <= 0;
+    void Follow() {
+        if (this.shootOn) {
+            Vector3 playerPosition = this.player.transform.position;
+            if (playerPosition.x < transform.position.x) {
+                this.rightPosition = -1;
+                Vector3 newScale = new Vector3(-1, 1, 1);
+                this.transform.localScale = newScale;
+
+                Vector3 velocity = new Vector3(-velEnemy, rb.velocity.y, 0);
+                this.rb.velocity = velocity;
+                animator.SetFloat("velX", velEnemy);
+            } else {
+                rightPosition = 1;
+                Vector3 newScale = new Vector3(1, 1, 1);
+                this.transform.localScale = newScale;
+
+                Vector3 velocity = new Vector3(velEnemy, rb.velocity.y, 0);
+                this.rb.velocity = velocity;
+                animator.SetFloat("velX", velEnemy);
+            }
+        }
+    
     }
 
-    void Dead() {
-        if (this.IsDead()) {
-            DestroyImmediate(this.gameObject);
+    void Movimiento() {
+        if (!this.shootOn) {
+            if (rightPosition == 1) {
+                if (this.transform.position.x > posicionIncial + movimiento) {
+                    rightPosition = -1;
+                    Vector3 newScale = new Vector3(-1, 1, 1);
+                    this.transform.localScale = newScale;
+                } else {
+                    Vector3 velocity = new Vector3(velEnemy, rb.velocity.y, 0);
+                    this.rb.velocity = velocity;
+                    animator.SetFloat("velX", velEnemy);
+                }
+            } else {
+                if (this.transform.position.x < posicionIncial - movimiento) {
+                    rightPosition = 1;
+                    Vector3 newScale = new Vector3(1, 1, 1);
+                    this.transform.localScale = newScale;
+                } else {
+                    Vector3 velocity = new Vector3(-velEnemy, rb.velocity.y, 0);
+                    this.rb.velocity = velocity;
+                    animator.SetFloat("velX", velEnemy);
+                }
+            }
         }
     }
 }

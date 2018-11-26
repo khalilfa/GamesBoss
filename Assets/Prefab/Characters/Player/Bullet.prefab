@@ -91,6 +91,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
   velocity: 5
+  rightPosition: 1
+  damage: 10
 --- !u!212 &212652108845030554
 SpriteRenderer:
   m_ObjectHideFlags: 1

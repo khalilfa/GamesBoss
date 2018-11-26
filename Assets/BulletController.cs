@@ -20,14 +20,17 @@ public class BulletController : MonoBehaviour {
 	}
 
     void Movimiento() {
-        if (owner.gameObject.tag == "Player") {
-            this.rb2d.AddForce(new Vector2(this.velocity * rightPosition, 0));
-        }
+        this.rb2d.AddRelativeForce(new Vector2(this.velocity * rightPosition, 0), ForceMode2D.Impulse);
     }
 
     public void SetState(GameObject owner) {
         this.owner = owner;
-        this.rightPosition = owner.GetComponent<PlayerController>().rightPosition;
+        if(owner.tag == "Player") {
+            this.rightPosition = owner.GetComponent<PlayerController>().rightPosition;
+        } else if(owner.tag == "Enemy") {
+            this.rightPosition = owner.GetComponent<EnemyController>().rightPosition;
+        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -35,12 +38,12 @@ public class BulletController : MonoBehaviour {
     }
 
     private void Destroy() {
-        DestroyImmediate(this.gameObject);
+        Destroy(this.gameObject);
     }
 
     private void GiveDamage(Collider2D collision) {
         if(collision.tag == "Enemy" && owner.tag == "Player") {
-            collision.GetComponent<EnemyController>().GetDamage(this.damage);
+            collision.GetComponent<EnemyDefenseController>().GetDamage(this.damage);
             Destroy();
         } else if (collision.tag == "Player" && owner.tag == "Enemy") {
             collision.GetComponent<PlayerController>().GetDamage(this.damage);

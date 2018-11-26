@@ -11,7 +11,6 @@ public class PlayerGunController : MonoBehaviour {
 
     private void Start() {
         this.camera = GameObject.FindGameObjectWithTag("MainCamera");
-        this.gun = GameObject.FindGameObjectWithTag("Gun");
     }
 
     void FixedUpdate () {
