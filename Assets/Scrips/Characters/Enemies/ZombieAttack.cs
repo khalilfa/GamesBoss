@@ -4,11 +4,21 @@ using UnityEngine;
 
 public class ZombieAttack : MonoBehaviour {
 
-	void Update () {
+    public GameObject player;
+    public int damage = 25;
+
+    private void Awake() {
+        this.player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    void Update () {
         Attack();
 	}
 
     void Attack() {
-
+        bool stay = this.gameObject.GetComponent<EnemyController>().stay;
+        if (stay) {
+            this.player.GetComponent<PlayerController>().GetDamage(this.damage);
+        }
     }
 }

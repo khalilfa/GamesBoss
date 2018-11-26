@@ -162,6 +162,11 @@ Prefab:
       propertyPath: velEnemy
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114981558600350028, guid: 6ed315553980c6b47a904b0846f4f39b,
+        type: 2}
+      propertyPath: stayDistance
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ed315553980c6b47a904b0846f4f39b, type: 2}
   m_IsPrefabAsset: 0
