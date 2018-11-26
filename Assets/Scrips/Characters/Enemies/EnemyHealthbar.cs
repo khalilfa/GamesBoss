@@ -9,7 +9,8 @@ public class EnemyHealthbar : MonoBehaviour {
     private float positionY;
     private float hp;
     public float maxHp;
-    public Image health;
+    public GameObject green;
+    public GameObject red;
 
     private void Start() {
         this.positionY = this.enemy.transform.position.y + 1.3f;
@@ -24,7 +25,7 @@ public class EnemyHealthbar : MonoBehaviour {
     public void TakeDamage(float amount)
     {
         hp = Mathf.Clamp(hp - amount, 0f, maxHp);
-        health.transform.localScale = new Vector2(hp / maxHp, 1);
+        green.transform.localScale = new Vector2(hp / maxHp, green.transform.localScale.y);
     }
 
     private void Dead() {

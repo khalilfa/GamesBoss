@@ -10,10 +10,9 @@ public class EnemyController : MonoBehaviour {
     public int rightPosition = 1;
     public float visualRadius;
     public GameObject player;
-    private bool shootOn = false;
-
-    public GameObject gun;
-    public Transform bullet;
+    public bool shootOn = false;
+    public bool stay = false;
+    public float stayDistance = 2;
 
     private Animator animator;
     private Rigidbody2D rb;
@@ -23,22 +22,16 @@ public class EnemyController : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         posicionIncial = this.transform.position.x;
-
-        InvokeRepeating("Shoot", 1, 1);
     }
 
     void FixedUpdate() {
         Movimiento();
         InVisualRaius();
         Follow();
+        Stay();
     }
 
-    void Shoot() {
-        if (this.shootOn) {
-            GameObject newBullet = (Instantiate(bullet, this.gun.transform.position, this.gun.transform.rotation)).gameObject;
-            newBullet.GetComponent<BulletController>().SetState(this.gameObject);
-        }
-    }
+    
 
     void InVisualRaius() {
         float distance = Vector2.Distance(this.player.transform.position, transform.position);
@@ -48,8 +41,20 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
+    void Stay() {
+        float distance = Vector2.Distance(this.player.transform.position, transform.position);
+        if (distance < this.stayDistance) {
+            this.stay = true;
+            Vector3 velocity = new Vector3(0, rb.velocity.y, 0);
+            this.rb.velocity = velocity;
+            animator.SetFloat("velX", 0);
+        } else {
+            this.stay = false;
+        }
+    }
+
     void Follow() {
-        if (this.shootOn) {
+        if (this.shootOn && !this.stay) {
             Vector3 playerPosition = this.player.transform.position;
             if (playerPosition.x < transform.position.x) {
                 this.rightPosition = -1;
@@ -73,7 +78,7 @@ public class EnemyController : MonoBehaviour {
     }
 
     void Movimiento() {
-        if (!this.shootOn) {
+        if (!this.shootOn && !this.stay) {
             if (rightPosition == 1) {
                 if (this.transform.position.x > posicionIncial + movimiento) {
                     rightPosition = -1;

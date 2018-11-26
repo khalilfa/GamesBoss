@@ -74,7 +74,9 @@
     <Compile Include="Assets\Scrips\Camera\CameraFollow.cs" />
     <Compile Include="Assets\Scrips\Characters\Enemies\EnemyController.cs" />
     <Compile Include="Assets\Scrips\Characters\Enemies\EnemyDefenseController.cs" />
+    <Compile Include="Assets\Scrips\Characters\Enemies\EnemyGunController.cs" />
     <Compile Include="Assets\Scrips\Characters\Enemies\EnemyHealthbar.cs" />
+    <Compile Include="Assets\Scrips\Characters\Enemies\ZombieAttack.cs" />
     <Compile Include="Assets\Scrips\Characters\Player\FeetController.cs" />
     <Compile Include="Assets\Scrips\Characters\Player\Healthbar.cs" />
     <Compile Include="Assets\Scrips\Characters\Player\PlayerController.cs" />

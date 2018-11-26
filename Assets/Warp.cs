@@ -7,6 +7,7 @@ public class Warp : MonoBehaviour
 {
     // Para almacenar el punto de destino
     public GameObject target;
+    public GameObject camera;
 
 
     void Awake()
@@ -14,7 +15,6 @@ public class Warp : MonoBehaviour
         // Si queremos podemos esconder el debug de los Warps
         GetComponent<SpriteRenderer>().enabled = false;
         transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
-
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -22,6 +22,7 @@ public class Warp : MonoBehaviour
         if (other.tag == "Player")
         {
             other.transform.position = target.transform.GetChild(0).transform.position;
+            this.camera.transform.position = new Vector3(this.camera.transform.position.x, other.transform.position.y + 3, 0);
         }
     }
 
