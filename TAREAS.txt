@@ -1,15 +1,15 @@
 
 
-Agregar zombies.(agregar animaciones -> se encarga facu.)
 
 
-CREAR PORTAL HACIA UN BONUS.
 
 
-arreglar plataformas con deslizante.
 
 
-agregar funcionalidad a a bomba.
+
+
+
+
 
 Al matar enemigo que suelte moneda.
 
@@ -31,7 +31,13 @@ agregar animacion de morir, herir a personaje y enemigo.
 
 cartel de game over y try again al morir.
 
-Que la musica de fondo se repita al terminar
 
+
+
+
+
+
+Que la musica de fondo se repita al terminar (o agregar otra musica mas larga)
+agregar funcionalidad a a bomba
 Agregar mando de xbox.
 
