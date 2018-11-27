@@ -37,6 +37,7 @@ public class PlayerGunController : MonoBehaviour {
             GameObject newBullet = (Instantiate(bullet, gun.transform.position, gun.transform.rotation)).gameObject;
             newBullet.GetComponent<BulletController>().SetState(this.gameObject);
             this.timeCounter = 0;
+            this.gun.GetComponent<AudioSource>().Play();
         }
     }
 }

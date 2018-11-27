@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
     public float jumpPower = 6.5f;
     public int rightPosition = 1;
     public int life;
+    public GameObject feet;
 
     private Rigidbody2D rb2d;
     private Animator anim;
@@ -84,6 +85,7 @@ public class PlayerController : MonoBehaviour {
             rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
             rb2d.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             jump = false;
+            this.feet.GetComponent<AudioSource>().Play();
         }
     }
 
