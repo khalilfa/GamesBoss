@@ -36,7 +36,9 @@ public class PlayerController : MonoBehaviour {
             doubleJump = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow)) {
+        float j = Input.GetAxis("Vertical");
+
+        if (j >= 0.1f) {
             if (grounded) {
                 jump = true;
                 doubleJump = true;
@@ -46,6 +48,25 @@ public class PlayerController : MonoBehaviour {
             }
         }
     }
+
+    /*void Update() {
+        anim.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
+        anim.SetBool("Grounded", grounded);
+
+        if (grounded) {
+            doubleJump = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.UpArrow)) {
+            if (grounded) {
+                jump = true;
+                doubleJump = true;
+            } else if (doubleJump) {
+                jump = true;
+                doubleJump = false;
+            }
+        }
+    }*/
 
     public void Die() {
         this.anim.SetBool("Die", true);
