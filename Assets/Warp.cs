@@ -8,6 +8,7 @@ public class Warp : MonoBehaviour
     // Para almacenar el punto de destino
     public GameObject target;
     public GameObject camera;
+    public int coinsNecesary;
 
 
     void Awake()
@@ -19,7 +20,7 @@ public class Warp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && other.GetComponent<PlayerController>().HasCoins(this.coinsNecesary))
         {
             other.transform.position = target.transform.GetChild(0).transform.position;
             this.camera.transform.position = new Vector3(this.camera.transform.position.x, other.transform.position.y + 3, 0);

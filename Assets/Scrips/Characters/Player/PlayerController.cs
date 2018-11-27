@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour {
     public bool grounded;
     public float jumpPower = 6.5f;
     public int rightPosition = 1;
-    public int life = 100;
+    public int life;
 
     private Rigidbody2D rb2d;
     private Animator anim;
@@ -44,6 +44,14 @@ public class PlayerController : MonoBehaviour {
                 doubleJump = false;
             }
         }
+    }
+
+    public void Die() {
+        this.anim.SetBool("Die", true);
+    }
+
+    public bool HasCoins(int cant) {
+        return this.monedas >= cant;
     }
 
     void FixedUpdate() {

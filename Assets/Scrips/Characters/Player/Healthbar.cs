@@ -9,21 +9,32 @@ public class Healthbar : MonoBehaviour
 
 
     public Image health;
+    private GameObject player;
 
-    float hp, maxHp = 100f;
+    private float hp;
+    public float maxHp;
+    public float dieSeconds;
 
 
-    void Start()
-    {
+    void Start(){
         hp = maxHp;
+        this.player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    void Update()  // SI ME SACAN LA VIDA, SE REINICIA EL JUEGO.
-    {
-        if (hp == 0)
-        {
-            Application.LoadLevel(Application.loadedLevel);
+    void Update(){
+        Die();
+    }
+
+    void Die() {
+        if (hp == 0) {
+            StartCoroutine("RestartLevel");
         }
+    }
+
+    IEnumerator RestartLevel() {
+        this.player.GetComponent<PlayerController>().Die();
+        yield return new WaitForSeconds(this.dieSeconds);
+        Application.LoadLevel(Application.loadedLevel);
     }
 
 

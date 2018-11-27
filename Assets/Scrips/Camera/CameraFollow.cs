@@ -5,8 +5,10 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour {
 
     public GameObject player;
-    public float posX = 7.5f;
-    public float posY = 5;
+    public float posX;
+    public float posY;
+    public float maxPosX;
+    public float maxPosY;
 
     private void Awake() {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -27,6 +29,9 @@ public class CameraFollow : MonoBehaviour {
     private void FollowPlayer() {
         float cameraPosX = player.transform.position.x + posX;
         float cameraPosY = player.transform.position.y + posY;
-        transform.position = new Vector3(cameraPosX, cameraPosY, -10);
+    
+        if(cameraPosX >= this.maxPosX && cameraPosY >= maxPosY) {
+            transform.position = new Vector3(cameraPosX, cameraPosY, -10);
+        }
     }
 }

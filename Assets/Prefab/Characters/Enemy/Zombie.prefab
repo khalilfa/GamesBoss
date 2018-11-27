@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 95254702378303556}
   - component: {fileID: 114981558600350028}
   - component: {fileID: 114510585333294550}
+  - component: {fileID: 114442596005089398}
   m_Layer: 0
   m_Name: ZombieObject
   m_TagString: Enemy
@@ -102,7 +103,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1242051968515222}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.18, y: 0.174, z: 0}
+  m_LocalPosition: {x: -0.18, y: 0.174, z: -1}
   m_LocalScale: {x: 2, y: 0.3364716, z: 1}
   m_Children: []
   m_Father: {fileID: 4842588174350680}
@@ -115,7 +116,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1363293543627882}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.47, y: -3.2, z: 45.47116}
+  m_LocalPosition: {x: 3.2851152, y: -3.213888, z: 45.47116}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4689667126948102}
@@ -232,6 +233,20 @@ MonoBehaviour:
   maxHp: 100
   green: {fileID: 1242051968515222}
   red: {fileID: 1253255185919742}
+--- !u!114 &114442596005089398
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1202691556480362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf5187a7f18b7b47933916de34855be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  damage: 25
+  atackTime: 1
 --- !u!114 &114510585333294550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -255,12 +270,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86000d27da35f684f8635e4429dbb195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velEnemy: 5
+  velEnemy: 4
   movimiento: 1
   rightPosition: 1
   visualRadius: 25
   player: {fileID: 0}
   shootOn: 0
+  stay: 0
+  stayDistance: 1.5
 --- !u!212 &212606125620337842
 SpriteRenderer:
   m_ObjectHideFlags: 1

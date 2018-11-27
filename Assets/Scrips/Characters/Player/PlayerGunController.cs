@@ -8,6 +8,8 @@ public class PlayerGunController : MonoBehaviour {
     public GameObject camera;
     public GameObject gun;
     public Transform bullet;
+    public float shootTime;
+    private float timeCounter;
 
     private void Start() {
         this.camera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -19,6 +21,7 @@ public class PlayerGunController : MonoBehaviour {
 
     private void Update() {
         Shoot();
+        this.timeCounter += Time.deltaTime;
     }
 
     void setSword() {
@@ -30,9 +33,10 @@ public class PlayerGunController : MonoBehaviour {
     }
 
     void Shoot() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space) && this.timeCounter >= this.shootTime) {
             GameObject newBullet = (Instantiate(bullet, gun.transform.position, gun.transform.rotation)).gameObject;
             newBullet.GetComponent<BulletController>().SetState(this.gameObject);
+            this.timeCounter = 0;
         }
     }
 }
