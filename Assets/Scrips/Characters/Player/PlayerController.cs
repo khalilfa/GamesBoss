@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour {
     public int monedas = 0;
 
     private AudioSource audioPlayer;
+    public AudioClip takeDamageAudio;
+    public AudioClip takeCoinAudio;
 
     void Start() {
         rb2d = GetComponent<Rigidbody2D>();
@@ -87,12 +89,6 @@ public class PlayerController : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)  // SI TOCA LOS PINCHOS PIERDA 5 DE VIDA ---- SI SE CAE DE PANTALLA SE REINICIA LA EL JUEGO- ACORDARSE TILDAS OPCION "IS TRIGGER" EN LOS PINCHOS.
     {
-        if (col.gameObject.tag == "Pinchos" )
-        {
-
-            healthbar.GetComponent<Healthbar>().TakeDamage(5);
-        }
-
         if (col.gameObject.tag == "Life")
         {
 
@@ -120,10 +116,16 @@ public class PlayerController : MonoBehaviour {
     public void SumarMoneda()
     {
         monedas++;
+        this.GetComponent<AudioSource>().clip = this.takeCoinAudio;
+        this.GetComponent<AudioSource>().Play();
     }
 
     public void GetDamage(int damage) {
-        healthbar.GetComponent<Healthbar>().TakeDamage(damage);
+        if (!blockMovement) {
+            healthbar.GetComponent<Healthbar>().TakeDamage(damage);
+            this.GetComponent<AudioSource>().clip = this.takeDamageAudio;
+            this.GetComponent<AudioSource>().Play();
+        }
     }
 
 

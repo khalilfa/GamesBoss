@@ -80,9 +80,11 @@
     <Compile Include="Assets\Scrips\Others\Bomb.cs" />
     <Compile Include="Assets\Scrips\Others\Corazon.cs" />
     <Compile Include="Assets\Scrips\Others\Moneda.cs" />
+    <Compile Include="Assets\Scrips\Others\PinchosController.cs" />
     <Compile Include="Assets\Scrips\Others\PlataformaFalling.cs" />
     <Compile Include="Assets\Scrips\Others\PlataformaMovil.cs" />
     <Compile Include="Assets\Scrips\Others\PlataformFalling.cs" />
+    <Compile Include="Assets\Scrips\Others\Timer.cs" />
     <Compile Include="Assets\Scrips\Others\Warp.cs" />
     <Compile Include="Assets\Scrips\Score.cs" />
     <Reference Include="UnityEditor.StandardEvents">

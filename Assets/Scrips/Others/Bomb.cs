@@ -18,7 +18,7 @@ public class Bomb : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision) {
         if(collision.gameObject.tag == "Player") {
             Impulse(collision);
-            StartCoroutine("BoomSound");
+            BoomSound();
             StartCoroutine("Boom");
             collision.gameObject.GetComponent<PlayerController>().GetDamage(this.damage);
         }
@@ -36,8 +36,7 @@ public class Bomb : MonoBehaviour {
         rb.AddForce(Vector2.up * this.impulseY, ForceMode2D.Impulse);
     }
 
-    IEnumerator BoomSound() {
-        yield return new WaitForSeconds(0.3f);
+    void BoomSound() {
         this.gameObject.GetComponent<AudioSource>().Play();
     }
 
@@ -49,32 +48,7 @@ public class Bomb : MonoBehaviour {
 
     IEnumerator Boom() {
         this.animator.SetBool("Boom", true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.35f);
         Destroy(this.gameObject);
     }
 }
-/*
- * 
- *  public void EnemyKnockBack(float enemyPosX)
-    {
-
-        healthBar.SendMessageUpwards("TakeDamage", 15f);
-
-        jump = true;
-
-        float side = Mathf.Sign(enemyPosX - transform.position.x);
-        rb2d.AddForce(Vector2.left * side * jumpPower, ForceMode2D.Impulse);
-
-        movement = false;
-        Invoke("EnableMovement", 0.7f);
-
-     
-    }
- * 
- * void EnableMovement()
-    {
-        movement = true;
-        spr.color = Color.white;
-    }
- * 
- * */
