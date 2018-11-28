@@ -28,18 +28,21 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Jump() {
-        float jump = Input.GetAxis("Vertical");
+        if (!this.blockMovement) {
+            float jump = Input.GetAxis("Vertical");
 
-        if (jump >= 0.1f && this.grounded) {
-            this.grounded = false;
-            rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
-            rb2d.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-            this.feet.GetComponent<AudioSource>().Play();
-        }
+            if (jump >= 0.1f && this.grounded) {
+                this.grounded = false;
+                rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
+                rb2d.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+                this.feet.GetComponent<AudioSource>().Play();
+            }
+        }   
     }
 
     public void Die() {
         this.anim.SetBool("Die", true);
+        this.blockMovement = true;
     }
 
     public bool HasCoins(int cant) {

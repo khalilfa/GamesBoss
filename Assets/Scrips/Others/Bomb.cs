@@ -18,6 +18,7 @@ public class Bomb : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision) {
         if(collision.gameObject.tag == "Player") {
             Impulse(collision);
+            StartCoroutine("BoomSound");
             StartCoroutine("Boom");
             collision.gameObject.GetComponent<PlayerController>().GetDamage(this.damage);
         }
@@ -33,6 +34,11 @@ public class Bomb : MonoBehaviour {
         }
 
         rb.AddForce(Vector2.up * this.impulseY, ForceMode2D.Impulse);
+    }
+
+    IEnumerator BoomSound() {
+        yield return new WaitForSeconds(0.3f);
+        this.gameObject.GetComponent<AudioSource>().Play();
     }
 
     IEnumerator BlockPlayerMovement() {

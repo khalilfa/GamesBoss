@@ -21,8 +21,18 @@
 
 Problema de escena Main scene
 
-Se agregó sonido de zombie y bomba para agregar opcional.
+.
+
+
+Se agregó sonido de zombie y bomba para agregar (opcional).
+
+Acortar balas.
+.
+
 
 
 
 NO ME TOQUES LOS PREFABS DE PLATAFORMAS NI DE LOS ENEMIGOS,CADA UNO ESTA CONFIGURADO SEGUN LA POSICION DONDE ESTA.
+
+
+ACORDARSE DE SUBIRLO.
