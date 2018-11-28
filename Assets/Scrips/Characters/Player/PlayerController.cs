@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour {
 
     private Rigidbody2D rb2d;
     private Animator anim;
+    public bool blockMovement;
 
     public GameObject healthbar;
     public int monedas = 0;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour {
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         audioPlayer = GetComponent<AudioSource>();
+        this.blockMovement = false;
     }
 
     void Jump() {
@@ -45,34 +47,38 @@ public class PlayerController : MonoBehaviour {
     }
 
     void FixedUpdate() {
-
         anim.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
         anim.SetBool("Grounded", grounded);
 
         Jump();
+        Movement();
+    }
 
-        Vector3 fixedVelocity = rb2d.velocity;
-        fixedVelocity.x *= 0.75f;
+    void Movement() {
+        if (!this.blockMovement) {
+            Vector3 fixedVelocity = rb2d.velocity;
+            fixedVelocity.x *= 0.75f;
 
-        if (grounded) {
-            rb2d.velocity = fixedVelocity;
-        }
+            if (grounded) {
+                rb2d.velocity = fixedVelocity;
+            }
 
-        float h = Input.GetAxis("Horizontal");
+            float h = Input.GetAxis("Horizontal");
 
-        rb2d.AddForce(Vector2.right * speed * h);
+            rb2d.AddForce(Vector2.right * speed * h);
 
-        float limitedSpeed = Mathf.Clamp(rb2d.velocity.x, -maxSpeed, maxSpeed);
-        rb2d.velocity = new Vector2(limitedSpeed, rb2d.velocity.y);
+            float limitedSpeed = Mathf.Clamp(rb2d.velocity.x, -maxSpeed, maxSpeed);
+            rb2d.velocity = new Vector2(limitedSpeed, rb2d.velocity.y);
 
-        if (h > 0.1f) {
-            transform.localScale = new Vector3(1f, 1f, 1f);
-            this.rightPosition = 1;
-        }
+            if (h > 0.1f) {
+                transform.localScale = new Vector3(1f, 1f, 1f);
+                this.rightPosition = 1;
+            }
 
-        if (h < -0.1f) {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
-            this.rightPosition = -1;
+            if (h < -0.1f) {
+                transform.localScale = new Vector3(-1f, 1f, 1f);
+                this.rightPosition = -1;
+            }
         }
     }
 
@@ -96,6 +102,11 @@ public class PlayerController : MonoBehaviour {
            
         }
 
+    }
+
+    public void Impulso() {
+        rb2d.AddForce(Vector2.up * 100, ForceMode2D.Impulse);
+        rb2d.AddForce(Vector2.right * 100, ForceMode2D.Impulse);
     }
 
     public void SumarVida()
