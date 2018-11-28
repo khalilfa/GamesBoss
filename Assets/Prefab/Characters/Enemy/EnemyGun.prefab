@@ -119,7 +119,7 @@ Transform:
   m_GameObject: {fileID: 1017691184044704}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2.0392032, y: -4.0017953, z: 0.072265625}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 4512628127379830}
   m_Father: {fileID: 4388765176789648}
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1017691184044704}
-  maxHp: 100
+  maxHp: 70
   green: {fileID: 1233979832286346}
   red: {fileID: 1340317559489736}
 --- !u!114 &114412077959556732
@@ -289,7 +289,7 @@ MonoBehaviour:
   velEnemy: 1
   movimiento: 2
   rightPosition: 1
-  visualRadius: 3
+  visualRadius: 12
   player: {fileID: 0}
   shootOn: 0
   stay: 0

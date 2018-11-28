@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour {
 
     public void SumarVida()
     {
-        healthbar.GetComponent<Healthbar>().TakeDamage(-5);
+        healthbar.GetComponent<Healthbar>().TakeDamage(-20);
     }
 
     public void SumarMoneda()
