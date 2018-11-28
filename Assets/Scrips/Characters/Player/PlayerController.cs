@@ -49,25 +49,6 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    /*void Update() {
-        anim.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
-        anim.SetBool("Grounded", grounded);
-
-        if (grounded) {
-            doubleJump = true;
-        }
-
-        if (Input.GetKeyDown(KeyCode.UpArrow)) {
-            if (grounded) {
-                jump = true;
-                doubleJump = true;
-            } else if (doubleJump) {
-                jump = true;
-                doubleJump = false;
-            }
-        }
-    }*/
-
     public void Die() {
         this.anim.SetBool("Die", true);
     }

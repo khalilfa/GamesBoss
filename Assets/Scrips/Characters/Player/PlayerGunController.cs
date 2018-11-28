@@ -25,7 +25,7 @@ public class PlayerGunController : MonoBehaviour {
     }
 
     void setSword() {
-        if (Input.GetKey(KeyCode.Alpha1)) {
+        if (Input.GetAxis("ChangeWeapon") > 0.1) {
             GameObject newPlayer = (Instantiate(playerSword, transform.position, transform.rotation)).gameObject;
             this.camera.GetComponent<CameraFollow>().SetPlayer(newPlayer);
             Destroy(this.gameObject);
@@ -33,7 +33,7 @@ public class PlayerGunController : MonoBehaviour {
     }
 
     void Shoot() {
-        if (Input.GetKeyDown(KeyCode.Space) && this.timeCounter >= this.shootTime) {
+        if (Input.GetAxis("Fire1") > 0.1 && this.timeCounter >= this.shootTime) {
             GameObject newBullet = (Instantiate(bullet, gun.transform.position, gun.transform.rotation)).gameObject;
             newBullet.GetComponent<BulletController>().SetState(this.gameObject);
             this.timeCounter = 0;
