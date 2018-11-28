@@ -9,13 +9,10 @@ public class PlayerController : MonoBehaviour {
     public bool grounded;
     public float jumpPower = 6.5f;
     public int rightPosition = 1;
-    public int life;
     public GameObject feet;
 
     private Rigidbody2D rb2d;
     private Animator anim;
-    private bool jump;
-    private bool doubleJump;
 
     public GameObject healthbar;
     public int monedas = 0;
@@ -28,24 +25,14 @@ public class PlayerController : MonoBehaviour {
         audioPlayer = GetComponent<AudioSource>();
     }
 
-    void Update() {
-        anim.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
-        anim.SetBool("Grounded", grounded);
+    void Jump() {
+        float jump = Input.GetAxis("Vertical");
 
-        if (grounded) {
-            doubleJump = true;
-        }
-
-        float j = Input.GetAxis("Vertical");
-
-        if (j >= 0.1f) {
-            if (grounded) {
-                jump = true;
-                doubleJump = true;
-            } else if (doubleJump) {
-                jump = true;
-                doubleJump = false;
-            }
+        if (jump >= 0.1f && this.grounded) {
+            this.grounded = false;
+            rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
+            rb2d.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            this.feet.GetComponent<AudioSource>().Play();
         }
     }
 
@@ -58,6 +45,11 @@ public class PlayerController : MonoBehaviour {
     }
 
     void FixedUpdate() {
+
+        anim.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
+        anim.SetBool("Grounded", grounded);
+
+        Jump();
 
         Vector3 fixedVelocity = rb2d.velocity;
         fixedVelocity.x *= 0.75f;
@@ -81,13 +73,6 @@ public class PlayerController : MonoBehaviour {
         if (h < -0.1f) {
             transform.localScale = new Vector3(-1f, 1f, 1f);
             this.rightPosition = -1;
-        }
-
-        if (jump) {
-            rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
-            rb2d.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-            jump = false;
-            this.feet.GetComponent<AudioSource>().Play();
         }
     }
 

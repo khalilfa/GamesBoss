@@ -61,29 +61,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Bomba.cs" />
-    <Compile Include="Assets\BulletController.cs" />
-    <Compile Include="Assets\Corazon.cs" />
-    <Compile Include="Assets\GameController.cs" />
-    <Compile Include="Assets\Moneda.cs" />
-    <Compile Include="Assets\Pause.cs" />
-    <Compile Include="Assets\PlataformaFalling.cs" />
-    <Compile Include="Assets\PlataformaMovil.cs" />
-    <Compile Include="Assets\PlataformFalling.cs" />
-    <Compile Include="Assets\Score.cs" />
     <Compile Include="Assets\Scrips\Camera\CameraFollow.cs" />
+    <Compile Include="Assets\Scrips\Camera\Pause.cs" />
     <Compile Include="Assets\Scrips\Characters\Enemies\EnemyController.cs" />
     <Compile Include="Assets\Scrips\Characters\Enemies\EnemyDefenseController.cs" />
     <Compile Include="Assets\Scrips\Characters\Enemies\EnemyGunController.cs" />
     <Compile Include="Assets\Scrips\Characters\Enemies\EnemyHealthbar.cs" />
     <Compile Include="Assets\Scrips\Characters\Enemies\ZombieAttack.cs" />
+    <Compile Include="Assets\Scrips\Characters\Enemies\ZombieController.cs" />
+    <Compile Include="Assets\Scrips\Characters\Player\BulletController.cs" />
     <Compile Include="Assets\Scrips\Characters\Player\FeetController.cs" />
     <Compile Include="Assets\Scrips\Characters\Player\Healthbar.cs" />
     <Compile Include="Assets\Scrips\Characters\Player\PlayerController.cs" />
     <Compile Include="Assets\Scrips\Characters\Player\PlayerGunController.cs" />
     <Compile Include="Assets\Scrips\Characters\Player\PlayerSwordController.cs" />
-    <Compile Include="Assets\Warp.cs" />
-    <Compile Include="Assets\ZombieController.cs" />
+    <Compile Include="Assets\Scrips\GameController.cs" />
+    <Compile Include="Assets\Scrips\Others\Bomb.cs" />
+    <Compile Include="Assets\Scrips\Others\Corazon.cs" />
+    <Compile Include="Assets\Scrips\Others\Moneda.cs" />
+    <Compile Include="Assets\Scrips\Others\PlataformaFalling.cs" />
+    <Compile Include="Assets\Scrips\Others\PlataformaMovil.cs" />
+    <Compile Include="Assets\Scrips\Others\PlataformFalling.cs" />
+    <Compile Include="Assets\Scrips\Others\Warp.cs" />
+    <Compile Include="Assets\Scrips\Score.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/facun/Desktop/Facu/juegos/proyectos/GamesBoss/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
