@@ -57,12 +57,15 @@ public class BulletController : MonoBehaviour {
     }
 
     private void GiveDamage(Collider2D collision) {
-        if(collision.tag == "Enemy" && owner.tag == "Player") {
-            collision.GetComponent<EnemyDefenseController>().GetDamage(this.damage);
-            Destroy();
-        } else if (collision.tag == "Player" && owner.tag == "Enemy") {
+
+        if (collision.tag == "Player" && owner.tag == "Enemy")
+        {
             collision.GetComponent<PlayerController>().GetDamage(this.damage);
             Destroy();
         }
+        if (collision.tag == "Enemy" && owner.tag == "Player") {
+            collision.GetComponent<EnemyDefenseController>().GetDamage(this.damage);
+            Destroy();
+        }  
     }
 }

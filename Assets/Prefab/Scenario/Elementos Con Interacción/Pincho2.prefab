@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4722179754687278}
   - component: {fileID: 212731495396631514}
   - component: {fileID: 61350571875223422}
+  - component: {fileID: 114258040161799482}
   m_Layer: 0
   m_Name: Pincho2
   m_TagString: Pinchos
@@ -35,8 +36,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1505999582831050}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.47, y: 11.03, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 57.323643, y: 1.9362259, z: 0}
+  m_LocalScale: {x: 0.44091713, y: 0.5227392, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -66,6 +67,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.05, y: 0.5208662}
   m_EdgeRadius: 0
+--- !u!114 &114258040161799482
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1505999582831050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695d0c6dbeb88414a98c28abfd04ab4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  timeToDamage: 1
+  playerFeet: {fileID: 0}
+  player: {fileID: 0}
 --- !u!212 &212731495396631514
 SpriteRenderer:
   m_ObjectHideFlags: 1

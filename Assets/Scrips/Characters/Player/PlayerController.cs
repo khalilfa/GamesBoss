@@ -89,11 +89,7 @@ public class PlayerController : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)  // SI TOCA LOS PINCHOS PIERDA 5 DE VIDA ---- SI SE CAE DE PANTALLA SE REINICIA LA EL JUEGO- ACORDARSE TILDAS OPCION "IS TRIGGER" EN LOS PINCHOS.
     {
-        if (col.gameObject.tag == "Life")
-        {
-
-            healthbar.GetComponent<Healthbar>().TakeDamage(-15);
-        }
+       
 
         if (col.gameObject.tag == "Muerte")
         {
